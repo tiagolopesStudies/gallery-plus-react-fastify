@@ -6,6 +6,7 @@ import Badge from './components/badge'
 import Button from './components/button'
 import ButtonIcon from './components/button-icon'
 import Divider from './components/divider'
+import { InputCheckBox } from './components/input-checkbox'
 import { InputText } from './components/input-text'
 
 export default function App() {
@@ -53,6 +54,10 @@ export default function App() {
 
       <div>
         <InputText placeholder="Buscar foto" icon={SearchIcon} />
+      </div>
+
+      <div>
+        <InputCheckBox />
       </div>
     </div>
   )
