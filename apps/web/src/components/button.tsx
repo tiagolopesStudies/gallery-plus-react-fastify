@@ -1,9 +1,8 @@
-import type React from 'react'
-import Icon from './icon'
-import Text from './text'
+import cx from 'classnames'
 import { tv, type VariantProps } from 'tailwind-variants'
 import SpinnerIcon from '../assets/icons/spinner.svg?react'
-import cx from 'classnames'
+import Icon from './icon'
+import Text from './text'
 
 export const buttonVariants = tv({
   base: 'flex items-center justify-center cursor-pointer transition rounded group gap-1',
@@ -116,12 +115,16 @@ export default function Button({
       <Text variant="label-medium" className={buttonTextVariants({ variant, size })}>
         {children}
       </Text>
-      {(icon || handling) && (
+      {handling ? (
         <Icon
-          svg={handling ? SpinnerIcon : icon!}
+          svg={SpinnerIcon}
           animate={handling}
           className={buttonIconVariants({ variant, size, handling })}
         />
+      ) : (
+        icon && (
+          <Icon svg={icon} className={buttonIconVariants({ variant, size, handling })} />
+        )
       )}
     </button>
   )
