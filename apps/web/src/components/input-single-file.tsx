@@ -1,6 +1,7 @@
+import cn from 'classnames'
 import { useMemo } from 'react'
 import { useWatch } from 'react-hook-form'
-import { cn, tv, type VariantProps } from 'tailwind-variants'
+import { tv, type VariantProps } from 'tailwind-variants'
 import fileImageIcon from '../assets/icons/image.svg?react'
 import uploadFileIcon from '../assets/icons/upload-file.svg?react'
 import Icon from './icon'
@@ -10,7 +11,7 @@ export const inputSingleFileVariants = tv({
   base: cn(
     'flex flex-col items-center justify-center w-full border',
     'border-border-primary group-hover:border-border-active rounded-lg gap-1 transition'
-  )({ twMerge: true }),
+  ),
   variants: {
     size: {
       md: 'px-5 py-6'

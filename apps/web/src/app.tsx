@@ -6,11 +6,21 @@ import Alert from './components/alert'
 import Badge from './components/badge'
 import Button from './components/button'
 import ButtonIcon from './components/button-icon'
+import {
+  Dialog,
+  DialogBody,
+  DialogClose,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTrigger
+} from './components/dialog'
 import Divider from './components/divider'
 import { ImageFilePreview } from './components/image-file-preview'
 import { InputCheckBox } from './components/input-checkbox'
 import { InputSingleFile } from './components/input-single-file'
 import { InputText } from './components/input-text'
+import Text from './components/text'
 
 export default function App() {
   const form = useForm()
@@ -75,6 +85,27 @@ export default function App() {
           form={form}
           {...form.register('file')}
         />
+      </div>
+
+      <div>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button>Abrir modal</Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>Teste Dialog</DialogHeader>
+            <DialogBody>
+              <Text>Teste do conteúdo do Dialog</Text>
+            </DialogBody>
+            <DialogFooter>
+              <DialogClose asChild>
+                <Button variant="secondary">Cancelar</Button>
+              </DialogClose>
+
+              <Button>Adicionar</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </div>
     </div>
   )
