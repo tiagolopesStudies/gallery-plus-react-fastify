@@ -16,7 +16,7 @@ import {
   DialogTrigger
 } from '../components/dialog'
 import Divider from '../components/divider'
-import { ImageFilePreview } from '../components/image-file-preview'
+import { ImagePreview } from '../components/image-preview'
 import { InputCheckBox } from '../components/input-checkbox'
 import { InputSingleFile } from '../components/input-single-file'
 import { InputText } from '../components/input-text'
@@ -81,7 +81,7 @@ export function ComponentsPage() {
         <InputSingleFile
           allowedExtensions={['png', 'jpg', 'jpeg', 'webp']}
           maxFileSizeInMb={10}
-          replaceBy={<ImageFilePreview src={fileSource} />}
+          replaceBy={<ImagePreview src={fileSource} />}
           form={form}
           {...form.register('file')}
         />
