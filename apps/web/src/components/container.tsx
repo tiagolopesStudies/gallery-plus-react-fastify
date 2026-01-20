@@ -1,11 +1,11 @@
-import { type VariantProps, tv } from 'tailwind-variants'
 import React from 'react'
+import { tv, type VariantProps } from 'tailwind-variants'
 
 export const containerVariants = tv({
   base: 'mx-auto',
   variants: {
     size: {
-      md: 'max-w-[62rem] px-2'
+      md: 'max-w-248 px-2'
     }
   },
   defaultVariants: {

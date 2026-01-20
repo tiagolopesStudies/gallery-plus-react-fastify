@@ -14,17 +14,17 @@ interface PhotoWidgetProps {
   badgeCount?: number
 }
 
-export function PhotoWidget({ photo, loading, badgeCount = 2 }: PhotoWidgetProps) {
+export function PhotoWidget({ photo, loading, badgeCount = 1 }: PhotoWidgetProps) {
   return (
     <div className="flex flex-col gap-4">
       {!loading ? (
         <ImagePreview
           src={photo.imageId}
           title={photo.title}
-          imageClassNames="size-54.25 rounded-lg"
+          imageClassNames="size-43.5 rounded-lg"
         />
       ) : (
-        <Skeleton className="size-54.25 rounded-lg" />
+        <Skeleton className="size-43.5 rounded-lg" />
       )}
 
       <div className="flex flex-col gap-2">
