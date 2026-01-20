@@ -1,5 +1,3 @@
-/** biome-ignore-all lint/suspicious/noArrayIndexKey: This is necessary to add a skeleton list. */
-
 import { Link } from 'react-router'
 import Badge from '@/components/badge'
 import { buttonTextVariants, buttonVariants } from '@/components/button'
