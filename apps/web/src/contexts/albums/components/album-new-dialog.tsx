@@ -26,7 +26,7 @@ export function AlbumNewDialog({ trigger }: AlbumNewDialogProps) {
       id: '1',
       imageId: 'wide-car.png',
       title: 'Olá mundo!',
-      albuns: [
+      albums: [
         { id: '321', title: 'Album 1' },
         { id: '123', title: 'Album 2' },
         { id: '133', title: 'Album 3' }
@@ -36,7 +36,7 @@ export function AlbumNewDialog({ trigger }: AlbumNewDialogProps) {
       id: '2',
       imageId: 'wide-tree.png',
       title: 'Olá mundo!',
-      albuns: [
+      albums: [
         { id: '321', title: 'Album 1' },
         { id: '123', title: 'Album 2' },
         { id: '133', title: 'Album 3' }

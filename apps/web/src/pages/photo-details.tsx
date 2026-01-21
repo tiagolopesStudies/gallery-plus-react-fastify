@@ -6,14 +6,17 @@ import Text from '@/components/text'
 import { AlbumsListSelectable } from '@/contexts/albums/components/albuns-list-selectable'
 import { PhotosNavigator } from '@/contexts/photos/components/photos-navigator'
 import type { Photo } from '@/contexts/photos/models/photo'
+import { UseAlbums } from '@/hooks/use-albums'
 
 export function PhotoDetailsPage() {
+  const { albums, isLoadingAlbums } = UseAlbums()
+
   const isLoadingPhoto = false
   const photo: Photo = {
     id: '2',
     imageId: 'square-cat.png',
     title: 'Olha o gatinho',
-    albuns: []
+    albums: []
   }
 
   return (
@@ -54,15 +57,7 @@ export function PhotoDetailsPage() {
             Álbuns
           </Text>
 
-          <AlbumsListSelectable
-            albums={[
-              { id: '1', title: 'Viagem' },
-              { id: '2', title: 'Fotografia' },
-              { id: '3', title: 'Natureza' }
-            ]}
-            photo={photo}
-            loading={isLoadingPhoto}
-          />
+          <AlbumsListSelectable albums={albums} photo={photo} loading={isLoadingAlbums} />
         </div>
       </div>
     </Container>

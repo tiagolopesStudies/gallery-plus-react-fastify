@@ -17,18 +17,18 @@ export function AlbumsListSelectable({
   photo
 }: AlbumsListSelectableProps) {
   function isChecked(albumId: string) {
-    return photo.albuns.some((album) => album.id === albumId)
+    return photo.albums.some((album) => album.id === albumId)
   }
 
   function handlePhotoOnAlbums(albumId: string) {
     let albumsIds: string[] = []
 
     if (isChecked(albumId)) {
-      albumsIds = photo.albuns
+      albumsIds = photo.albums
         .filter((album) => album.id !== albumId)
         .map((album) => album.id)
     } else {
-      albumsIds = [...photo.albuns.map((album) => album.id), albumId]
+      albumsIds = [...photo.albums.map((album) => album.id), albumId]
     }
 
     return albumsIds

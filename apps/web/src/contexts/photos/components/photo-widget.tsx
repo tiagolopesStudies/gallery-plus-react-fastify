@@ -37,13 +37,13 @@ export function PhotoWidget({ photo, loading, badgeCount = 1 }: PhotoWidgetProps
         <div className="flex gap-1 min-h-4.5">
           {!loading ? (
             <>
-              {photo.albuns.slice(0, badgeCount).map((album) => (
+              {photo.albums.slice(0, badgeCount).map((album) => (
                 <Badge className="truncate" size="xs" key={album.id}>
                   {album.title}
                 </Badge>
               ))}
-              {photo.albuns.length > badgeCount && (
-                <Badge size="xs">+ {photo.albuns.length - badgeCount}</Badge>
+              {photo.albums.length > badgeCount && (
+                <Badge size="xs">+ {photo.albums.length - badgeCount}</Badge>
               )}
             </>
           ) : (
