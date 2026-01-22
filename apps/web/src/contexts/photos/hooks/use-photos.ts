@@ -5,14 +5,16 @@ import type { Photo } from '../models/photo'
 
 export function usePhotos() {
   const toSearchParams = createSerializer({
-    albumId: parseAsString
+    albumId: parseAsString,
+    q: parseAsString
   })
 
   const [albumId, setAlbumId] = useQueryState('albumId')
+  const [query, setQuery] = useQueryState('q')
 
   const { data, isLoading } = useQuery<Photo[]>({
-    queryKey: ['photos', albumId],
-    queryFn: () => fetcher(`/photos${toSearchParams({ albumId })}`)
+    queryKey: ['photos', albumId, query],
+    queryFn: () => fetcher(`/photos${toSearchParams({ albumId, q: query })}`)
   })
 
   return {
@@ -20,7 +22,9 @@ export function usePhotos() {
     isLoadingPhotos: isLoading,
     filters: {
       albumId,
-      setAlbumId
+      setAlbumId,
+      query,
+      setQuery
     }
   }
 }
