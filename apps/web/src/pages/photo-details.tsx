@@ -4,12 +4,12 @@ import { ImagePreview } from '@/components/image-preview'
 import Skeleton from '@/components/skeleton'
 import Text from '@/components/text'
 import { AlbumsListSelectable } from '@/contexts/albums/components/albuns-list-selectable'
-import { UseAlbums } from '@/contexts/albums/hooks/use-albums'
+import { useAlbums } from '@/contexts/albums/hooks/use-albums'
 import { PhotosNavigator } from '@/contexts/photos/components/photos-navigator'
 import type { Photo } from '@/contexts/photos/models/photo'
 
 export function PhotoDetailsPage() {
-  const { albums, isLoadingAlbums } = UseAlbums()
+  const { albums, isLoadingAlbums } = useAlbums()
 
   const isLoadingPhoto = false
   const photo: Photo = {

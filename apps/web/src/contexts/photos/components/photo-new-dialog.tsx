@@ -15,14 +15,14 @@ import { InputSingleFile } from '@/components/input-single-file'
 import { InputText } from '@/components/input-text'
 import Skeleton from '@/components/skeleton'
 import Text from '@/components/text'
-import { UseAlbums } from '@/contexts/albums/hooks/use-albums'
+import { useAlbums } from '@/contexts/albums/hooks/use-albums'
 
 interface PhotoNewDialogProps {
   trigger: React.ReactNode
 }
 
 export function PhotoNewDialog({ trigger }: PhotoNewDialogProps) {
-  const { albums, isLoadingAlbums } = UseAlbums()
+  const { albums, isLoadingAlbums } = useAlbums()
   const form = useForm()
 
   return (
