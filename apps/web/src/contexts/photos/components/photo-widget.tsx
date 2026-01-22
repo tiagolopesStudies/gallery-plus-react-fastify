@@ -4,6 +4,7 @@ import { buttonTextVariants, buttonVariants } from '@/components/button'
 import { ImagePreview } from '@/components/image-preview'
 import Skeleton from '@/components/skeleton'
 import Text from '@/components/text'
+import { env } from '@/helpers/env'
 import type { Photo } from '../models/photo'
 
 interface PhotoWidgetProps {
@@ -17,7 +18,7 @@ export function PhotoWidget({ photo, loading, badgeCount = 1 }: PhotoWidgetProps
     <div className="flex flex-col gap-4">
       {!loading ? (
         <ImagePreview
-          src={photo.imageId}
+          src={`${env.VITE_IMAGES_URL}/${photo.imageId}`}
           title={photo.title}
           imageClassNames="size-43.5 rounded-lg"
         />

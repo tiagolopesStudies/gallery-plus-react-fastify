@@ -13,36 +13,15 @@ import { InputText } from '@/components/input-text'
 import Skeleton from '@/components/skeleton'
 import Text from '@/components/text'
 import { PhotoImageSelectable } from '@/contexts/photos/components/photo-image-selectable'
-import type { Photo } from '@/contexts/photos/models/photo'
+import { usePhotos } from '@/contexts/photos/hooks/use-photos'
+import { env } from '@/helpers/env'
 
 export interface AlbumNewDialogProps {
   trigger: React.ReactNode
 }
 
 export function AlbumNewDialog({ trigger }: AlbumNewDialogProps) {
-  const isLoadingPhotos = false
-  const photos: Photo[] = [
-    {
-      id: '1',
-      imageId: 'wide-car.png',
-      title: 'Olá mundo!',
-      albums: [
-        { id: '321', title: 'Album 1' },
-        { id: '123', title: 'Album 2' },
-        { id: '133', title: 'Album 3' }
-      ]
-    },
-    {
-      id: '2',
-      imageId: 'wide-tree.png',
-      title: 'Olá mundo!',
-      albums: [
-        { id: '321', title: 'Album 1' },
-        { id: '123', title: 'Album 2' },
-        { id: '133', title: 'Album 3' }
-      ]
-    }
-  ]
+  const { photos, isLoadingPhotos } = usePhotos()
 
   function handleTogglePhoto(_selected: boolean, _photoId: string) {}
 
@@ -71,7 +50,7 @@ export function AlbumNewDialog({ trigger }: AlbumNewDialogProps) {
                 {photos.map((photo) => (
                   <PhotoImageSelectable
                     key={photo.id}
-                    src={`/images/${photo.imageId}`}
+                    src={`${env.VITE_IMAGES_URL}/${photo.imageId}`}
                     title={photo.title}
                     onSelectImage={(selected) => handleTogglePhoto(selected, photo.id)}
                     imageClassNames="size-20 rounded"

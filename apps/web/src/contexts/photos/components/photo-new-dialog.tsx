@@ -15,7 +15,7 @@ import { InputSingleFile } from '@/components/input-single-file'
 import { InputText } from '@/components/input-text'
 import Skeleton from '@/components/skeleton'
 import Text from '@/components/text'
-import { UseAlbums } from '@/hooks/use-albums'
+import { UseAlbums } from '@/contexts/albums/hooks/use-albums'
 
 interface PhotoNewDialogProps {
   trigger: React.ReactNode

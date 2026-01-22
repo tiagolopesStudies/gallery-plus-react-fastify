@@ -4,9 +4,9 @@ import { ImagePreview } from '@/components/image-preview'
 import Skeleton from '@/components/skeleton'
 import Text from '@/components/text'
 import { AlbumsListSelectable } from '@/contexts/albums/components/albuns-list-selectable'
+import { UseAlbums } from '@/contexts/albums/hooks/use-albums'
 import { PhotosNavigator } from '@/contexts/photos/components/photos-navigator'
 import type { Photo } from '@/contexts/photos/models/photo'
-import { UseAlbums } from '@/hooks/use-albums'
 
 export function PhotoDetailsPage() {
   const { albums, isLoadingAlbums } = UseAlbums()
