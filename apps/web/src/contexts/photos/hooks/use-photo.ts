@@ -1,5 +1,7 @@
-import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
+import { useNavigate } from 'react-router'
 import { toast } from 'sonner'
+import { usePhotoAlbums } from '@/contexts/albums/hooks/use-photo-albums'
 import { api, fetcher } from '@/helpers/api'
 import type { Photo } from '../models/photo'
 import type { PhotoNewFormSchema } from '../schemas'
@@ -10,7 +12,8 @@ interface PhotoDetailsResponse extends Photo {
 }
 
 export function usePhoto(id?: string) {
-  const queryClient = useQueryClient()
+  const { managePhotoOnAlbum } = usePhotoAlbums()
+  const navigate = useNavigate()
 
   const { data, isLoading } = useQuery<PhotoDetailsResponse>({
     queryKey: ['photo', id],
@@ -37,12 +40,8 @@ export function usePhoto(id?: string) {
       )
 
       if (payload.albumsIds && payload.albumsIds.length > 0) {
-        await api.put(`photos/${photo.id}/albums`, {
-          albumsIds: payload.albumsIds
-        })
+        await managePhotoOnAlbum(photo.id, payload.albumsIds)
       }
-
-      queryClient.invalidateQueries({ queryKey: ['photos'] })
 
       toast.success('Foto adicionada com sucesso')
     } catch (error) {
@@ -52,11 +51,25 @@ export function usePhoto(id?: string) {
     }
   }
 
+  async function deletePhoto(photoId: string) {
+    try {
+      await api.delete(`/photos/${photoId}`)
+
+      toast.success('Foto excluída com sucesso!')
+
+      navigate('/')
+    } catch (error) {
+      console.log('error:', error)
+      toast.error('Não foi possível excluir a foto')
+    }
+  }
+
   return {
     photo: data,
     nextPhotoId: data?.nextPhotoId,
     previousPhotoId: data?.previousPhotoId,
     isLoadingPhoto: isLoading,
-    createPhoto
+    createPhoto,
+    deletePhoto
   }
 }
