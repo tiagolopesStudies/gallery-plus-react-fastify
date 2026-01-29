@@ -41,7 +41,7 @@ export function PhotoImageSelectable({
     <label className={photoImageSelectableVariants({ className, select: isSelected })}>
       <InputCheckBox
         size="sm"
-        checked={isSelected}
+        defaultChecked={isSelected}
         onChange={handleSelect}
         className="absolute top-1 left-1"
       />
