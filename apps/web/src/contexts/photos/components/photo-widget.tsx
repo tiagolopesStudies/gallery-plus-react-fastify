@@ -4,6 +4,7 @@ import { buttonTextVariants, buttonVariants } from '@/components/button'
 import { ImagePreview } from '@/components/image-preview'
 import Skeleton from '@/components/skeleton'
 import Text from '@/components/text'
+import { env } from '@/helpers/env'
 import type { Photo } from '../models/photo'
 
 interface PhotoWidgetProps {
@@ -17,7 +18,7 @@ export function PhotoWidget({ photo, loading, badgeCount = 1 }: PhotoWidgetProps
     <div className="flex flex-col gap-4">
       {!loading ? (
         <ImagePreview
-          src={photo.imageId}
+          src={`${env.VITE_IMAGES_URL}/${photo.imageId}`}
           title={photo.title}
           imageClassNames="size-43.5 rounded-lg"
         />
@@ -37,13 +38,13 @@ export function PhotoWidget({ photo, loading, badgeCount = 1 }: PhotoWidgetProps
         <div className="flex gap-1 min-h-4.5">
           {!loading ? (
             <>
-              {photo.albuns.slice(0, badgeCount).map((album) => (
+              {photo.albums.slice(0, badgeCount).map((album) => (
                 <Badge className="truncate" size="xs" key={album.id}>
                   {album.title}
                 </Badge>
               ))}
-              {photo.albuns.length > badgeCount && (
-                <Badge size="xs">+ {photo.albuns.length - badgeCount}</Badge>
+              {photo.albums.length > badgeCount && (
+                <Badge size="xs">+ {photo.albums.length - badgeCount}</Badge>
               )}
             </>
           ) : (

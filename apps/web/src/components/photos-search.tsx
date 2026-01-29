@@ -1,14 +1,16 @@
 import { type ChangeEvent, useCallback, useState } from 'react'
 import { SearchIcon } from '@/assets/icons'
+import { usePhotos } from '@/contexts/photos/hooks/use-photos'
 import { debounce } from '@/helpers/utils'
 import { InputText } from './input-text'
 
 export function PhotosSearch() {
-  const [inputValue, setInputValue] = useState('')
+  const { filters } = usePhotos()
+  const [inputValue, setInputValue] = useState(filters.query ?? '')
 
   const debouncedSetValue = useCallback(
-    debounce((_value: string) => {
-      // chamada para a API
+    debounce((value: string) => {
+      filters.setQuery(value)
     }, 200),
     []
   )
