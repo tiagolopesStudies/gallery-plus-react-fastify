@@ -1,4 +1,5 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { toast } from 'sonner'
 import { api, fetcher } from '@/helpers/api'
 import type { Photo } from '../models/photo'
 import type { PhotoNewFormSchema } from '../schemas'
@@ -42,9 +43,12 @@ export function usePhoto(id?: string) {
       }
 
       queryClient.invalidateQueries({ queryKey: ['photos'] })
+
+      toast.success('Foto adicionada com sucesso')
     } catch (error) {
       console.log('Erro:', error)
-      throw error
+
+      toast.error('Não foi possível adicionar a foto')
     }
   }
 
